@@ -34,3 +34,7 @@ export default function App() {
     </div>
   );
 }
+
+// the issues
+// clicking on project item doesn't show its respected tasks
+// it only responds when the page load afresh and a project item is clicked

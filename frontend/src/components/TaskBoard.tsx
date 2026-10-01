@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
 import { getTasks, updateTaskStatus } from '../api/client';
 import TaskItem from './TaskItem';
+import {Task} from "../types"
 
-export default function TaskBoard({ projectId }) {
-  const [tasks, setTasks] = useState([]);
+export default function TaskBoard({ projectId }:{projectId: number}) {
+  const [tasks, setTasks] = useState<Task>([]);
+    const [loading,setLoading] = useState(true)
+  const [error,setError] = useState<string | null>()
+    
+
 
   useEffect(() => {
     getTasks(projectId).then((data) => {
+      console.log("tasks: ", data)
       setTasks(data);
     });
   }, []);
